@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.rating_screen">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:backgroundTint="#000000"
+            />
+        <TextView
+            android:id="@+id/skip"
+            android:layout_gravity="center"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="  Skip "
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/colorPrimary"
+            />
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:layout_marginBottom="20dp"
+            android:id="@+id/tempo"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rate Your Experience"
+            android:textColor="@color/colorPrimary"
+            />
+
+        <RatingBar
+            android:layout_below="@id/tempo"
+        android:id="@+id/ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/RatingBar"
+        android:numStars="5"
+        android:visibility="visible"
+        android:stepSize="1"
+        android:layout_centerHorizontal="true"
+        />
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:fontFamily="@font/calibri"
+            android:id="@+id/ratingtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ratingbar"
+            />
+
+    <EditText
+        android:textSize="16sp"
+        android:fontFamily="@font/gotham"
+        android:id="@+id/comment"
+        android:textColor="#000000"
+        android:layout_margin="30dp"
+        android:hint="Enter Your Comment Here"
+        android:padding="8dp"
+        android:gravity="start"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/edit_border"
+        android:layout_below="@id/ratingtext"
+        />
+
+    <com.skydoves.elasticviews.ElasticButton
+        app:button_duration="250"
+        app:button_scale="0.87"
+        app:button_cornerRadius="8dp"
+        android:textStyle="bold"
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/comment"
+        android:background="@color/colorPrimary"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="17sp"
+        android:fontFamily="@font/gotham"
+        />
+
+    </RelativeLayout>
+
+</RelativeLayout>
