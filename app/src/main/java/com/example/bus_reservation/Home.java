@@ -68,7 +68,7 @@ public class Home extends Fragment {
         button=view.findViewById(R.id.search);
         Startpoint.add("From");
         Endpoint.add("To");
-        type.add("Select Type");
+//        type.add("Select Type");
         Id.add("id");
         Vid.add("id");
 
