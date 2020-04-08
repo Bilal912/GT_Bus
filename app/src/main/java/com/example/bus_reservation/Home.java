@@ -106,15 +106,15 @@ public class Home extends Fragment {
                 if (Start.getSelectedItem().toString().equals("From")){
                     Toast.makeText(getActivity(),"Please Select Start Point", LENGTH_SHORT).show();
                 }
-                else if (End.getSelectedItem().toString().equals("To")){
-                    Toast.makeText(getActivity(),"Please Select End Point", LENGTH_SHORT).show();
-                }
+//                else if (End.getSelectedItem().toString().equals("To")){
+//                    Toast.makeText(getActivity(),"Please Select End Point", LENGTH_SHORT).show();
+//                }
                 else if (Type.getSelectedItem().toString().equals("Select Type")){
                     Toast.makeText(getActivity(),"Please Select Vehicle Type", LENGTH_SHORT).show();
                 }
-                else if (String.valueOf(textView.getText()).equals("Select Journey Date")){
-                    Toast.makeText(getActivity(),"Please Select Date", LENGTH_SHORT).show();
-                }
+//                else if (String.valueOf(textView.getText()).equals("Select Journey Date")){
+//                    Toast.makeText(getActivity(),"Please Select Date", LENGTH_SHORT).show();
+//                }
                 else {
 
                     int val = Startpoint.indexOf(Start.getSelectedItem().toString());

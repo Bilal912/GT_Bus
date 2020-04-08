@@ -202,6 +202,7 @@
             android:textSize="18sp"
             android:fontFamily="@font/gotham"
             />
+
         <Spinner
             android:layout_marginTop="12dp"
             android:layout_marginStart="20dp"
@@ -219,6 +220,7 @@
             android:layout_height="100dp"
             android:layout_below="@id/linearLayout4"
             />
+
     </RelativeLayout>
 
     </ScrollView>

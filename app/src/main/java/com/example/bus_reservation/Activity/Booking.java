@@ -58,11 +58,12 @@ public class Booking extends AppCompatActivity {
             }
         });
     }
+
     public void getData(final String first , final String last , final String date , final String Vtype){
         final android.app.AlertDialog loading = new ProgressDialog(Booking.this);
         loading.setMessage("Wait...");
         loading.show();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, Constant.Base_url_Search+"start_point="+first+"&end_point="+last+"&date="+date+"&fleet_type="+Vtype, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Search+"start_point="+first+"&end_point="+last+"&date="+date+"&fleet_type="+Vtype , new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Boolean status = null;
@@ -106,7 +107,6 @@ public class Booking extends AppCompatActivity {
                             }
                         });
                     }
-
                 }
                 catch (Exception e){
                     loading.dismiss();
@@ -138,7 +138,6 @@ public class Booking extends AppCompatActivity {
 
             @Override
             public void retry(VolleyError error) throws VolleyError {
-
             }
         });
 
