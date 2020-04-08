@@ -6,8 +6,9 @@
     android:layout_marginTop="40dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="20dp"
+    app:cardElevation="10dp"
     app:cardCornerRadius="20dp"
+    android:layout_marginBottom="20dp"
     >
     <LinearLayout
         android:background="@drawable/book_border"
@@ -144,22 +145,24 @@
                 android:gravity="center"
                 android:text="0"
                 android:textStyle="bold"
-                android:fontFamily="@font/gotham"
+                android:fontFamily="@font/calibri"
                 android:textColor="#ffffff"
-                android:textSize="26sp"
+                android:textSize="32sp"
                 />
+
             <TextView
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:id="@+id/price_id"
                 android:textAlignment="center"
                 android:layout_below="@id/price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Price (per seat)"
+                android:text="Price"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 />
             <com.skydoves.elasticviews.ElasticButton
+                android:visibility="gone"
                 app:button_duration="250"
                 app:button_scale="0.87"
                 android:id="@+id/book"

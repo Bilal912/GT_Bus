@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,11 +24,15 @@ import com.example.bus_reservation.Constant;
 import com.example.bus_reservation.R;
 import com.example.bus_reservation.Adapter.booking_adapter;
 import com.example.bus_reservation.Model.booking_model;
+import com.skydoves.elasticviews.ElasticButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -37,19 +44,24 @@ public class Booking extends AppCompatActivity {
     TextView back;
     RecyclerView recyclerView;
     ArrayList<booking_model> model;
+    TextView textView;
+    ElasticButton button;
+    String stat = "0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
+        button=findViewById(R.id.book_button);
+        textView=findViewById(R.id.date);
         back=findViewById(R.id.back);
         recyclerView=findViewById(R.id.recycler_id);
         model = new ArrayList<>();
         String first = getIntent().getStringExtra("first");
         String last = getIntent().getStringExtra("last");
-        String date = getIntent().getStringExtra("date");
+        String Date = getIntent().getStringExtra("date");
         String vtype = getIntent().getStringExtra("vtype");
-        getData(first,last,date,vtype);
+        getData(first,last,Date,vtype);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +75,17 @@ public class Booking extends AppCompatActivity {
         final android.app.AlertDialog loading = new ProgressDialog(Booking.this);
         loading.setMessage("Wait...");
         loading.show();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Search+"start_point="+first+"&end_point="+last+"&date="+date+"&fleet_type="+Vtype , new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Search+"start_point="+first
+                //+"&end_point="+last+"&date="+date+"&fleet_type="+Vtype
+                , new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Boolean status = null;
                 try {
                     status = response.getBoolean("response");
-                    JSONArray jsonArray = response.getJSONArray("data");
                     if (status) {
+                        JSONArray jsonArray = response.getJSONArray("data");
+
                         for (int i = 0; i < jsonArray.length(); i++) {
                             booking_model value = new booking_model();
                             JSONObject object = jsonArray.getJSONObject(i);
@@ -85,7 +100,7 @@ public class Booking extends AppCompatActivity {
                             value.setStartTime(object.getString("display_time"));
                             value.setEndTime(object.getString("end_time"));
                             value.setDuration(object.getString("duration"));
-                            value.setPrice(object.getString("display_price"));
+                            value.setPrice(object.getString("price"));
                             value.setBookingDate(object.getString("booking_date"));
                             value.setFleetSeats(object.getString("fleet_seats"));
                             model.add(value);
@@ -114,7 +129,7 @@ public class Booking extends AppCompatActivity {
                 }
                     LinearLayoutManager layoutManager = new LinearLayoutManager(Booking.this);
                     recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(new booking_adapter(Booking.this,model,first,last));
+                    recyclerView.setAdapter(new booking_adapter(Booking.this,model,first,last,button,textView));
             }
         }
                 , new Response.ErrorListener() {
