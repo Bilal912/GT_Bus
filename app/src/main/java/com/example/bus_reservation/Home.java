@@ -149,7 +149,6 @@ public class Home extends Fragment {
 
         final android.app.AlertDialog loading = new ProgressDialog(getContext());
         loading.setMessage("Getting Data...");
-        loading.setCancelable(false);
         loading.show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, Constant.Base_url_Index, new Response.Listener<JSONObject>() {
@@ -175,7 +174,7 @@ public class Home extends Fragment {
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(new home_adapter(getContext(), Startpoint));
-
+                        loading.dismiss();
 
 //                        Start.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Startpoint));
 //                        End.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Endpoint));
@@ -188,7 +187,7 @@ public class Home extends Fragment {
 //                            Vid.add(tem2);
 //                        }
 //                        Type.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, type));
-                        loading.dismiss();
+
                     }
                     else {
 

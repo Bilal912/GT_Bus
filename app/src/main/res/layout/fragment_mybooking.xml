@@ -13,4 +13,19 @@
         android:id="@+id/recycler_id"
         />
 
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/no_booking"
+        android:text="No Booking Found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:clickable="false"
+        android:fontFamily="@font/gotham"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        />
+
+
 </FrameLayout>

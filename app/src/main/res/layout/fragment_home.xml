@@ -31,11 +31,12 @@
                 android:background="@drawable/avy"
                 />
        <TextView
+           android:visibility="gone"
            android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="SEARCH TOURS"
+        android:text="Book Now"
         android:fontFamily="@font/gotham"
         android:textColor="@color/colorPrimary"
         android:textSize="16sp"
@@ -72,7 +73,6 @@
             android:orientation="horizontal"
             android:weightSum="100" >
 
-
             <TextView
                 android:drawableLeft="@drawable/location"
                 android:layout_width="0dp"
@@ -80,8 +80,8 @@
                 android:layout_weight="70"
                 android:drawablePadding="5dp"
                 android:fontFamily="@font/gotham"
-                android:text="Select Route For Booking"
-                android:textColor="#000000"
+                android:text="Book Now"
+                android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
                 />
 <!--            <ImageView-->

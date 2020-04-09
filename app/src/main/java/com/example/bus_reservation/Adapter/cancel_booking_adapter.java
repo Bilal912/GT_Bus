@@ -67,6 +67,7 @@ public class cancel_booking_adapter extends RecyclerView.Adapter<cancel_booking_
         holder.bookingid.setText(data.get(position).getTktBookingIdNo());
         holder.price.setText(data.get(position).getCancelationFees());
         holder.cause.setText(data.get(position).getCauses());
+        holder.refund_fee.setText("Refund Amount : ".concat(data.get(position).getRefund_fee()));
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,10 +85,11 @@ public class cancel_booking_adapter extends RecyclerView.Adapter<cancel_booking_
     }
     public class GithubViewHolder extends RecyclerView.ViewHolder{
 
-        TextView bookingdate,bookingid,price,cause;
+        TextView bookingdate,bookingid,price,cause,refund_fee;
         Button button;
         public GithubViewHolder(@NonNull View itemView) {
             super(itemView);
+            refund_fee=itemView.findViewById(R.id.refund_fee);
             bookingdate=itemView.findViewById(R.id.date_id);
             bookingid=itemView.findViewById(R.id.pickup);
             price=itemView.findViewById(R.id.price);

@@ -19,10 +19,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="70" >
-                <TextView
+
+                    <TextView
                     android:id="@+id/route_name"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -87,6 +89,7 @@
                         />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/pickup_demo"
                         android:layout_below="@id/seat_number"
                         android:layout_alignParentLeft="true"
@@ -100,6 +103,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_below="@id/seat_number"
                         android:id="@+id/pickup"
                         android:layout_toRightOf="@id/pickup_demo"
@@ -114,6 +118,7 @@
                         />
 
                     <TextView
+                        android:visibility="gone"
                         android:id="@+id/dropup_demo"
                         android:layout_below="@id/pickup_demo"
                         android:layout_alignParentLeft="true"
@@ -127,6 +132,7 @@
                         android:textSize="14sp" />
 
                     <TextView
+                        android:visibility="gone"
                         android:layout_below="@id/pickup_demo"
                         android:id="@+id/dropup"
                         android:layout_toRightOf="@id/dropup_demo"
@@ -171,9 +177,9 @@
                         android:gravity="center"
                         android:text="0"
                         android:textStyle="bold"
-                        android:fontFamily="@font/gotham"
+                        android:fontFamily="@font/calibri"
                         android:textColor="#ffffff"
-                        android:textSize="29sp"
+                        android:textSize="30sp"
                         />
                     <TextView
                         android:layout_marginTop="5dp"
@@ -188,7 +194,7 @@
                         />
 
                     <com.skydoves.elasticviews.ElasticButton
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         app:button_duration="250"
                         app:button_scale="0.87"
                         android:id="@+id/refund"

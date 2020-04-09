@@ -82,6 +82,7 @@ public class Cancelled_Booking extends Fragment {
                             value.setDate(object.getString("date"));
                             value.setTktBookingIdNo(object.getString("tkt_booking_id_no"));
                             value.setImage(object.getString("payment_image"));
+                            value.setRefund_fee(object.getString("refund_amount"));
                             model.add(value);
                             loading.dismiss();
                         }
@@ -89,7 +90,7 @@ public class Cancelled_Booking extends Fragment {
 
                     else {
                         loading.dismiss();
-                        textView.setVisibility(0);
+                        textView.setVisibility(View.VISIBLE);
                     }
                 }
                 catch (Exception e){

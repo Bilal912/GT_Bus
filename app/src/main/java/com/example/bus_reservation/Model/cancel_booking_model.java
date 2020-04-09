@@ -11,6 +11,15 @@ public class cancel_booking_model {
     @SerializedName("payment_image")
     @Expose
     private String image;
+    private String refund_fee;
+
+    public String getRefund_fee() {
+        return refund_fee;
+    }
+
+    public void setRefund_fee(String refund_fee) {
+        this.refund_fee = refund_fee;
+    }
 
     public String getImage() {
         return image;

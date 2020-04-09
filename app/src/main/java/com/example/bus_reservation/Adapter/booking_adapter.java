@@ -56,11 +56,11 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
 
         String space = "  ";
         githubViewHolder.routname.setText(data.get(i).getTripRouteName());
-        githubViewHolder.duration.setText(data.get(i).getPickupTripLocation());
+//        githubViewHolder.duration.setText(data.get(i).getPickupTripLocation());
         githubViewHolder.price.setText(data.get(i).getPrice());
         githubViewHolder.vehiclenumber.setText(data.get(i).getFleetRegistrationNo());
         githubViewHolder.departure.setText("PickUp Timing: ".concat(data.get(i).getStartTime()));
-        githubViewHolder.arrival.setText(data.get(i).getDropTripLocation());
+//        githubViewHolder.arrival.setText(data.get(i).getDropTripLocation());
 
         final Calendar myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {

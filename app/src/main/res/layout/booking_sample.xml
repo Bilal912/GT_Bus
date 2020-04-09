@@ -63,6 +63,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/pickup_demo"
                 android:layout_below="@id/booking_demo"
                 android:layout_alignParentLeft="true"
@@ -76,6 +77,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_below="@id/booking_demo"
                 android:id="@+id/pickup"
                 android:layout_toRightOf="@id/pickup_demo"
@@ -90,6 +92,7 @@
                 />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/dropup_demo"
                 android:layout_below="@id/pickup_demo"
                 android:layout_alignParentLeft="true"
@@ -103,6 +106,7 @@
                 android:textSize="16sp" />
 
             <TextView
+                android:visibility="gone"
                 android:layout_below="@id/pickup"
                 android:id="@+id/dropup"
                 android:layout_toRightOf="@id/dropup_demo"
@@ -152,7 +156,7 @@
                 />
 
             <TextView
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:id="@+id/price_id"
                 android:textAlignment="center"
                 android:layout_below="@id/price"

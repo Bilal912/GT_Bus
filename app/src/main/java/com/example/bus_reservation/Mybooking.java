@@ -49,6 +49,7 @@ public class Mybooking extends Fragment {
 
     RecyclerView recyclerView;
     ArrayList<mybooking_model> model;
+    TextView textView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +57,7 @@ public class Mybooking extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mybooking, container, false);
 
+        textView=view.findViewById(R.id.no_booking);
         recyclerView=view.findViewById(R.id.recycler_id);
         model = new ArrayList<mybooking_model>();
         SharedPreferences editors = getActivity().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
@@ -104,6 +106,7 @@ public class Mybooking extends Fragment {
                     }
                     else {
                         loading.dismiss();
+                        textView.setVisibility(View.VISIBLE);
                         Toast.makeText(getActivity(),"No trip available", LENGTH_SHORT).show();
                     }
 
