@@ -44,7 +44,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <fragment
-        android:name="com.example.bus_reservation.Dashboard"
+        android:name="com.example.bus_reservation.Home"
         android:layout_below="@id/appbar"
         android:id="@+id/nav_fragment"
         android:layout_width="match_parent"

@@ -6,14 +6,14 @@
     <group android:checkableBehavior="single"
         android:enabled="true"
         android:visible="true">
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/bus_book"
+            android:checked="true"
+            android:title="Book Seat(s)"
+            />
         <item android:id="@+id/nav_dash"
             android:title="Dashboard"
             android:icon="@drawable/home"
-            android:checked="true"
-            />
-        <item android:id="@+id/nav_home"
-              android:icon="@drawable/bus_book"
-              android:title="Book Seat(s)"
             />
         <item android:id="@+id/nav_profile"
               android:icon="@drawable/person"

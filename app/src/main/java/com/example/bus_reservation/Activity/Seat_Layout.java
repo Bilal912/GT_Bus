@@ -46,6 +46,7 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
     ArrayList<String> book;
     ArrayList<String> Left_seat;
     ArrayList<String> Final;
+    String rout_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,15 +71,16 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
         Seat_bus.setText((bus_seat.concat(" ")).concat("SEAT(S)"));
         String trip_id = getIntent().getStringExtra("trip_id");
         String fleet_id = getIntent().getStringExtra("fleet_reg_no");
+        String date = getIntent().getStringExtra("date");
+        rout_id = getIntent().getStringExtra("rout_id");
 
-        getdata(trip_id, fleet_id);
+        getdata(rout_id, fleet_id,date);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String price = getIntent().getStringExtra("price");
                 String routn = getIntent().getStringExtra("routn");
-                String rout_id = getIntent().getStringExtra("rout_id");
                 String booking_date = getIntent().getStringExtra("booking_date");
                 String first = getIntent().getStringExtra("first");
                 String last = getIntent().getStringExtra("last");
@@ -110,14 +112,18 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
 
     }
 
-    public void getdata(String Trip, String Fleet) {
+    public void getdata(String Trip, String Fleet,String Date) {
 
         final android.app.AlertDialog loading = new ProgressDialog(Seat_Layout.this);
         loading.setMessage("Getting Data...");
         loading.show();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, Constant.Base_url_Bus_Seat + "trip_id_no=" + Trip + "&fleet_registration_id=" + Fleet, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,
+                Constant.Base_url_Bus_Seat + "start_date=" + Date
+                + "trip_route_id=" + Trip
+                + "&fleet_registration_id=" + Fleet, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+
                 String layout = null;
                 try {
                     layout = response.getString("seat_layout");

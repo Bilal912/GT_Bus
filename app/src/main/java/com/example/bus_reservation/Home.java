@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Message;
 import android.view.LayoutInflater;
@@ -31,6 +33,9 @@ import com.example.bus_reservation.Activity.Booking;
 import com.example.bus_reservation.Activity.Login;
 import com.example.bus_reservation.Activity.Menu;
 import com.example.bus_reservation.Activity.Pick_Drop;
+import com.example.bus_reservation.Activity.SeatDetail;
+import com.example.bus_reservation.Adapter.home_adapter;
+import com.example.bus_reservation.Adapter.seatdetail_adapter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +52,7 @@ import static android.widget.Toast.makeText;
 public class Home extends Fragment {
 
     Spinner Start,End,Type;
+    RecyclerView recyclerView;
     Button button;
     ArrayList<String> Startpoint,type,Endpoint,Id,Vid;
     TextView textView;
@@ -55,6 +61,7 @@ public class Home extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+        recyclerView=view.findViewById(R.id.recycler_id);
         Vid=new ArrayList<>();
         Id= new ArrayList<String>();
         textView=view.findViewById(R.id.date);
@@ -62,11 +69,11 @@ public class Home extends Fragment {
         Startpoint = new ArrayList<>();
         Endpoint = new ArrayList<>();
         type = new ArrayList<>();
-        Start=view.findViewById(R.id.start_point);
+//        Start=view.findViewById(R.id.start_point);
         End=view.findViewById(R.id.end_point);
         Type=view.findViewById(R.id.vehicle_type);
         button=view.findViewById(R.id.search);
-        Startpoint.add("From");
+//        Startpoint.add("From");
         Endpoint.add("To");
 //        type.add("Select Type");
         Id.add("id");
@@ -99,41 +106,42 @@ public class Home extends Fragment {
         });
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (Start.getSelectedItem().toString().equals("From")){
-                    Toast.makeText(getActivity(),"Please Select Start Point", LENGTH_SHORT).show();
-                }
-//                else if (End.getSelectedItem().toString().equals("To")){
-//                    Toast.makeText(getActivity(),"Please Select End Point", LENGTH_SHORT).show();
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if (Start.getSelectedItem().toString().equals("From")){
+//                    Toast.makeText(getActivity(),"Please Select Start Point", LENGTH_SHORT).show();
 //                }
-                else if (Type.getSelectedItem().toString().equals("Select Type")){
-                    Toast.makeText(getActivity(),"Please Select Vehicle Type", LENGTH_SHORT).show();
-                }
-//                else if (String.valueOf(textView.getText()).equals("Select Journey Date")){
-//                    Toast.makeText(getActivity(),"Please Select Date", LENGTH_SHORT).show();
+////                else if (End.getSelectedItem().toString().equals("To")){
+////                    Toast.makeText(getActivity(),"Please Select End Point", LENGTH_SHORT).show();
+////                }
+//                else if (Type.getSelectedItem().toString().equals("Select Type")){
+//                    Toast.makeText(getActivity(),"Please Select Vehicle Type", LENGTH_SHORT).show();
 //                }
-                else {
+////                else if (String.valueOf(textView.getText()).equals("Select Journey Date")){
+////                    Toast.makeText(getActivity(),"Please Select Date", LENGTH_SHORT).show();
+////                }
+//                else {
+//
+//                    int val = Startpoint.indexOf(Start.getSelectedItem().toString());
+//                    String id = Id.get(val);
+//                    int val2 = Endpoint.indexOf(End.getSelectedItem().toString());
+//                    String id2 = Id.get(val2);
+//                    int vval = type.indexOf(Type.getSelectedItem().toString());
+//                    String vid = Vid.get(vval);
+//                    String date = String.valueOf(textView.getText());
+//
+//                    Intent in = new Intent(getActivity(), Booking.class);
+//                    in.putExtra("first",id);
+//                    in.putExtra("last",id2);
+//                    in.putExtra("date",date);
+//                    in.putExtra("vtype",vid);
+//                    startActivity(in);
+//                }
+//            }
+//        });
 
-                    int val = Startpoint.indexOf(Start.getSelectedItem().toString());
-                    String id = Id.get(val);
-                    int val2 = Endpoint.indexOf(End.getSelectedItem().toString());
-                    String id2 = Id.get(val2);
-                    int vval = type.indexOf(Type.getSelectedItem().toString());
-                    String vid = Vid.get(vval);
-                    String date = String.valueOf(textView.getText());
-
-                    Intent in = new Intent(getActivity(), Booking.class);
-                    in.putExtra("first",id);
-                    in.putExtra("last",id2);
-                    in.putExtra("date",date);
-                    in.putExtra("vtype",vid);
-                    startActivity(in);
-                }
-            }
-        });
     return view;
     }
 
@@ -141,6 +149,7 @@ public class Home extends Fragment {
 
         final android.app.AlertDialog loading = new ProgressDialog(getContext());
         loading.setMessage("Getting Data...");
+        loading.setCancelable(false);
         loading.show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, Constant.Base_url_Index, new Response.Listener<JSONObject>() {
@@ -152,7 +161,7 @@ public class Home extends Fragment {
 
                     status = response.getBoolean("response");
                     JSONArray jsonArray = response.getJSONArray("location_dropdown");
-                    JSONArray jsonArray2 = response.getJSONArray("fleet_dropdown");
+//                    JSONArray jsonArray2 = response.getJSONArray("fleet_dropdown");
                     if (status){
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
@@ -161,19 +170,24 @@ public class Home extends Fragment {
                             Endpoint.add(temp);
                             String temp2 = object.getString("id");
                             Id.add(temp2);
-
                         }
-                        Start.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Startpoint));
-                        End.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Endpoint));
 
-                        for (int j = 0; j < jsonArray2.length(); j++) {
-                            JSONObject object2 = jsonArray2.getJSONObject(j);
-                            String tem = object2.getString("type");
-                            type.add(tem);
-                            String tem2 = object2.getString("id");
-                            Vid.add(tem2);
-                        }
-                        Type.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, type));
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(new home_adapter(getContext(), Startpoint));
+
+
+//                        Start.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Startpoint));
+//                        End.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Endpoint));
+//
+//                        for (int j = 0; j < jsonArray2.length(); j++) {
+//                            JSONObject object2 = jsonArray2.getJSONObject(j);
+//                            String tem = object2.getString("type");
+//                            type.add(tem);
+//                            String tem2 = object2.getString("id");
+//                            Vid.add(tem2);
+//                        }
+//                        Type.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, type));
                         loading.dismiss();
                     }
                     else {

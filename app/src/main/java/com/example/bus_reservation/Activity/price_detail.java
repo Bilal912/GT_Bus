@@ -20,7 +20,7 @@ public class price_detail extends AppCompatActivity {
     TextView back;
     TextView Price,Tprice,Seat,Pickup,Dropup,Route;
     Button button;
-    ArrayList<String> temp,name,number;
+    ArrayList<String> temp,name,number,gender;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +39,12 @@ public class price_detail extends AppCompatActivity {
         temp = new ArrayList<String>();
         name = new ArrayList<String>();
         number = new ArrayList<String>();
-
+        gender=new ArrayList<>();
 
         temp = this.getIntent().getStringArrayListExtra("seat");
         name= this.getIntent().getStringArrayListExtra("Name");
         number= this.getIntent().getStringArrayListExtra("Number");
+        gender= this.getIntent().getStringArrayListExtra("Gender");
 
         final String price = getIntent().getStringExtra("price");
         final String pick = getIntent().getStringExtra("pick");
@@ -83,6 +84,7 @@ public class price_detail extends AppCompatActivity {
                     i.putStringArrayListExtra("seat",temp);
                     i.putStringArrayListExtra("Name",name);
                     i.putStringArrayListExtra("Number",number);
+                    i.putStringArrayListExtra("Gender",gender);
                     i.putExtra("rout_id",rout_id);
                     i.putExtra("fleet_id",fleet_id);
                     i.putExtra("trip_id",trip_id);

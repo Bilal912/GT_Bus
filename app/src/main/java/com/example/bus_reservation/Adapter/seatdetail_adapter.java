@@ -9,9 +9,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import com.example.bus_reservation.Model.seatdetail_model;
 import com.example.bus_reservation.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.jar.Attributes;
 
@@ -43,6 +47,7 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
     private ArrayList<String> data;
     private final ArrayList<String> name = new ArrayList<String>();
     private final ArrayList<String> number = new ArrayList<String>();
+    private final ArrayList<String> gender = new ArrayList<String>();
 
     public seatdetail_adapter(Context context, ArrayList<String> data, Button button, String pick, String drop, String price
             , String routn,String rout_id,String booking_date,String trip_id,String fleet_id ,ArrayList<String> list){
@@ -76,15 +81,20 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
         holder.Name.setTag(position);
         holder.Number.setTag(position);
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                gender.removeAll(Collections.singleton(new String("Select Gender")));
+
                 if (TextUtils.isEmpty(holder.Name.getText().toString())){
                     Toast.makeText(context, "Name is required", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isEmpty(holder.Number.getText().toString())){
                     Toast.makeText(context, "Number is required", Toast.LENGTH_SHORT).show();
+                }
+                else if (holder.s.getSelectedItem().toString().equals("Select Gender")){
+                    Toast.makeText(context, "Gender is required", Toast.LENGTH_SHORT).show();
                 }
                 else {
 
@@ -99,6 +109,7 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
                     i.putStringArrayListExtra("seat",data);
                     i.putStringArrayListExtra("Name", name);
                     i.putStringArrayListExtra("Number", number);
+                    i.putStringArrayListExtra("Gender", gender);
                     i.putExtra("rout_id",rout_id);
                     i.putExtra("fleet_id",fleet_id);
                     i.putExtra("trip_id",trip_id);
@@ -117,12 +128,21 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
 
         TextView Seat;
         EditText Name,Number;
-
+        Spinner s;
+        ArrayList<String> temp;
         public GithubViewHolder(@NonNull View itemView) {
             super(itemView);
+            temp=new ArrayList<>();
             Seat = itemView.findViewById(R.id.seatno);
             Name=itemView.findViewById(R.id.name);
             Number=itemView.findViewById(R.id.number);
+            s=itemView.findViewById(R.id.spinner);
+            temp.add("Select Gender");
+            temp.add("Male");
+            temp.add("Female");
+            temp.add("Other");
+
+            s.setAdapter(new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, temp));
 
             Name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -145,6 +165,20 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
                     }
                 }
             });
+
+            s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    String Gender = s.getSelectedItem().toString();
+                    gender.add(Gender);
+//                    Toast.makeText(context,String.valueOf(gender),Toast.LENGTH_LONG).show();
+                }
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+
         }
     }
 }

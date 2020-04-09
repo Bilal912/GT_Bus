@@ -43,10 +43,10 @@ import static com.example.bus_reservation.Activity.Login.MY_PREFS_NAME;
 
 public class Payumoney extends AppCompatActivity {
     String passenger_id;
-    String Seat_number,Seat_name,Seat_no,Price;
+    String Seat_number,Seat_name,Seat_no,Price,Seat_gender;
     WebView webView;
     String transaction_id;
-    ArrayList<String> temp,Name,Number;
+    ArrayList<String> temp,Name,Number,Gender;
     int size;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +56,20 @@ public class Payumoney extends AppCompatActivity {
         temp=new ArrayList<>();
         Name=new ArrayList<>();
         Number=new ArrayList<>();
+        Gender = new ArrayList<>();
+
+        Gender = this.getIntent().getStringArrayListExtra("Gender");
         temp = this.getIntent().getStringArrayListExtra("seat");
         Name = this.getIntent().getStringArrayListExtra("Name");
         Number = this.getIntent().getStringArrayListExtra("Number");
         Seat_number = temp.toString();
         Seat_name = Name.toString();
         Seat_no = Number.toString();
+        Seat_gender = Gender.toString();
         Seat_number = Seat_number.substring(1, Seat_number.length() - 1);
         Seat_name = Seat_name.substring(1, Seat_name.length() - 1);
         Seat_no = Seat_no.substring(1, Seat_no.length() - 1);
+        Seat_gender = Seat_gender.substring(1, Seat_gender.length() - 1);
 
         Price = getIntent().getStringExtra("price");
 
@@ -174,6 +179,7 @@ public class Payumoney extends AppCompatActivity {
         params.put("seats[]", Seat_number);
         params.put("names[]", Seat_name);
         params.put("numbers[]", Seat_no);
+        params.put("gender[]", Seat_no);
 
         CustomRequest jsonRequest = new CustomRequest(Request.Method.POST, Constant.Base_url_Create_Booking,params, new Response.Listener<JSONObject>() {
             @Override

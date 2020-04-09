@@ -69,7 +69,7 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
 
-                button.setBackgroundColor(Color.parseColor("#29166f"));
+//                button.setBackgroundColor(Color.parseColor("#29166f"));
                 //#29166f
                 // TODO Auto-generated method stub
                 myCalendar.set(Calendar.YEAR, year);
@@ -79,21 +79,6 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 textView.setText(sdf.format(myCalendar.getTime()));
-            }
-        };
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new DatePickerDialog(context, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
                 if (textView.getText().equals("Select Journey Date")){
                     Toast.makeText(context,"Please Select Your Journey Date",Toast.LENGTH_LONG).show();
@@ -106,6 +91,8 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
                     String rout_name = data.get(i).getTripRouteName();
                     String booking_date = data.get(i).getBookingDate();
                     String bus_seat = data.get(i).getFleetSeats();
+                    String pickup = data.get(i).getPickupTripLocation();
+                    String dropup=data.get(i).getDropTripLocation();
 
                     Intent i = new Intent(context, Seat_Layout.class);
                     i.putExtra("routn", rout_name);
@@ -114,13 +101,56 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
                     i.putExtra("trip_id", trip_id);
                     i.putExtra("price", price);
                     i.putExtra("booking_date", booking_date);
-                    i.putExtra("first", first);
-                    i.putExtra("last", last);
+                    i.putExtra("first", pickup);
+                    i.putExtra("last", dropup);
                     i.putExtra("bus_seat", bus_seat);
+                    i.putExtra("date",textView.getText().toString());
                     context.startActivity(i);
                 }
+
+            }
+        };
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new DatePickerDialog(context, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                if (textView.getText().equals("Select Journey Date")){
+//                    Toast.makeText(context,"Please Select Your Journey Date",Toast.LENGTH_LONG).show();
+//                }
+//                else {
+//                    String rout_id = data.get(i).getTripRouteId();
+//                    String fleet_id = data.get(i).getFleetRegistrationId();
+//                    String trip_id = data.get(i).getTripIdNo();
+//                    String price = data.get(i).getPrice();
+//                    String rout_name = data.get(i).getTripRouteName();
+//                    String booking_date = data.get(i).getBookingDate();
+//                    String bus_seat = data.get(i).getFleetSeats();
+//
+//                    Intent i = new Intent(context, Seat_Layout.class);
+//                    i.putExtra("routn", rout_name);
+//                    i.putExtra("rout_id", rout_id);
+//                    i.putExtra("fleet_reg_no", fleet_id);
+//                    i.putExtra("trip_id", trip_id);
+//                    i.putExtra("price", price);
+//                    i.putExtra("booking_date", booking_date);
+//                    i.putExtra("first", first);
+//                    i.putExtra("last", last);
+//                    i.putExtra("bus_seat", bus_seat);
+//                    i.putExtra("date",textView.getText().toString());
+//                    context.startActivity(i);
+//                }
+//            }
+//        });
 
     }
 
