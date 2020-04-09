@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                     else {
-                        Intent i = new Intent(MainActivity.this, Menu.class);
+                        Intent i = new Intent(MainActivity.this, rating_screen.class);
                         startActivity(i);
                         finish();
                     }

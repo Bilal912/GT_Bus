@@ -38,7 +38,7 @@
         android:text="SEARCH TOURS"
         android:fontFamily="@font/gotham"
         android:textColor="@color/colorPrimary"
-        android:textSize="18sp"
+        android:textSize="16sp"
         />
         </LinearLayout>
 
@@ -54,6 +54,7 @@
         android:background="@drawable/edit_border"
         >
         <TextView
+            android:visibility="gone"
             android:padding="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,14 +74,16 @@
 
 
             <TextView
+                android:drawableLeft="@drawable/location"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="45"
+                android:layout_weight="70"
+                android:drawablePadding="5dp"
                 android:fontFamily="@font/gotham"
-                android:text="Select Route"
-                android:textAlignment="center"
+                android:text="Select Route For Booking"
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="16sp"
+                />
 <!--            <ImageView-->
 <!--                android:layout_width="0dp"-->
 <!--                android:layout_height="match_parent"-->
@@ -97,7 +100,6 @@
 <!--                android:textAlignment="center"-->
 <!--                android:textColor="#000000"-->
 <!--                android:textSize="18sp" />-->
-
 
         </LinearLayout>
 

@@ -203,8 +203,9 @@ public class Payumoney extends AppCompatActivity {
                         pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                             @Override
                             public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                Intent i = new Intent(Payumoney.this,Menu.class);
+                                Intent i = new Intent(Payumoney.this,rating_screen.class);
                                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                i.putExtra("trip_id",trip_id);
                                 startActivity(i);
                                 finish();
                             }
