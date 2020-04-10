@@ -8,6 +8,8 @@ public class Constant {
     //new url
     public static final String Base_url="https://bus.finalyearprojects.website/bus365/api";
 
+    public static final String Base_url_token = "https://bus.finalyearprojects.website/bus365/website/api/save_token";
+
     public static final String Base_url_rating = Base_url+"/save_rating";
 
     public static final String Base_url_login = Base_url+"/login";

@@ -18,10 +18,12 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bus_reservation.Constant;
 import com.example.bus_reservation.R;
 import com.example.bus_reservation.volley.CustomRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
@@ -37,10 +39,10 @@ public class Login extends AppCompatActivity {
 
        public static final String MY_PREFS_NAME = "MyPrefsFile";
 
-    String id = "";
     TextView register, forget;
     Button login;
     EditText username, password;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +55,7 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.name);
         password = findViewById(R.id.pass);
 
-        final String email = username.getText().toString();
-        final String passw = password.getText().toString();
+        token = FirebaseInstanceId.getInstance().getToken();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +68,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Password is required", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    getData(username.getText().toString(), password.getText().toString());
+                    getData(username.getText().toString(), password.getText().toString(),token);
                 }
             }
         });
@@ -91,10 +92,11 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void getData(final String Email, final String Password) {
+    private void getData(final String Email, final String Password, final String Token) {
 
         final android.app.AlertDialog loading = new ProgressDialog(Login.this);
         loading.setMessage("Checking...");
+        loading.setCancelable(false);
         loading.show();
 
         Map<String, String> params = new Hashtable<String, String>();
@@ -137,7 +139,9 @@ public class Login extends AppCompatActivity {
                         editors.putString("passenger_id",passenger_id);
                         editors.apply();
 
+                        gettokenrequest(Token,passenger_id);
                         loading.dismiss();
+
                         Intent intent = new Intent(Login.this, Menu.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
@@ -184,9 +188,51 @@ public class Login extends AppCompatActivity {
             }
         });
 
-//        MySingleton.getInstance(this).addToRequestQueue(jsonRequest);
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(jsonRequest);
 
+    }
+
+    private void gettokenrequest(String token, String id) {
+
+        Map<String, String> params = new Hashtable<String, String>();
+        params.put("device_id", FirebaseInstanceId.getInstance().getToken());
+        params.put("user_id", id);
+
+        CustomRequest jsonRequest = new CustomRequest(Request.Method.POST, Constant.Base_url_token,params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+                SharedPreferences.Editor editors = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editors.putString("token", FirebaseInstanceId.getInstance().getToken());
+                editors.apply();
+            }
+        }
+                , new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+//                loading.dismiss();
+//                makeText(getApplicationContext(), "Something went wrong" + error, LENGTH_LONG).show();
+            }
+        });
+
+        jsonRequest.setRetryPolicy(new RetryPolicy() {
+            @Override
+            public int getCurrentTimeout() {
+                return 50000;
+            }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+        RequestQueue queue = Volley.newRequestQueue(this);
+        queue.add(jsonRequest);
     }
 }

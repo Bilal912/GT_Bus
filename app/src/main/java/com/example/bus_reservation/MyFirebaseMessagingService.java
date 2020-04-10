@@ -71,7 +71,6 @@ public  class MyFirebaseMessagingService extends FirebaseMessagingService {
                     .setLargeIcon(((BitmapDrawable)getDrawable(R.drawable.icon)).getBitmap())
                     .setSmallIcon(R.drawable.icon)
                     .setColor(Color.parseColor("#ffffff"))
-                    //.setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.electro))
                     .setContentText(remoteMessage.getNotification().getBody())
                     .setSmallIcon(R.drawable.icon)
                     .setContentIntent(pi);
