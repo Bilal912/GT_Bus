@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "179070978578",
+    "firebase_url": "https://project-ers-d2d99.firebaseio.com",
+    "project_id": "project-ers-d2d99",
+    "storage_bucket": "project-ers-d2d99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179070978578:android:3e1d71173484caf8e6e6cb",
+        "android_client_info": {
+          "package_name": "com.example.bus_reservation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179070978578-hrm4mlalsbdpmjvhivsvqrjrgrss4o52.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgsw54BLeoIWsiVBH7TOw4GMwMt2N-aKE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179070978578-hrm4mlalsbdpmjvhivsvqrjrgrss4o52.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
