@@ -123,7 +123,7 @@ public class Payumoney extends AppCompatActivity {
                 //parse uri
                 Uri uri= Uri.parse(webView.getUrl());
                 transaction_id = uri.getQueryParameter("txtid");
-                getData();
+                getData(transaction_id);
 
             }
             else if (url.contains("failure.php")){
@@ -152,7 +152,7 @@ public class Payumoney extends AppCompatActivity {
 
     }
 
-    public void getData() {
+    public void getData(String trans_id) {
 
         final String rout_id = getIntent().getStringExtra("rout_id");
         final String booking_date = getIntent().getStringExtra("booking_date");
@@ -175,11 +175,11 @@ public class Payumoney extends AppCompatActivity {
         params.put("booking_date",booking_date);
         params.put("price",Price);
         params.put("request_facilities[]","free breakfast");
-        params.put("transaction_id", transaction_id);
+        params.put("transaction_id", trans_id);
         params.put("seats[]", Seat_number);
         params.put("names[]", Seat_name);
         params.put("numbers[]", Seat_no);
-        params.put("gender[]", Seat_no);
+        params.put("gender[]", Seat_gender);
 
         CustomRequest jsonRequest = new CustomRequest(Request.Method.POST, Constant.Base_url_Create_Booking,params, new Response.Listener<JSONObject>() {
             @Override
@@ -216,6 +216,8 @@ public class Payumoney extends AppCompatActivity {
 
                         msg = response.getString("exception");
                         webView.destroy();
+                        makeText(Payumoney.this,"Else", LENGTH_SHORT).show();
+//                        finish();
 //                        final SweetAlertDialog pDialog = new SweetAlertDialog(Payumoney.this, SweetAlertDialog.ERROR_TYPE);
 //                        pDialog.setTitleText("Error");
 //                        pDialog.setContentText(msg);
@@ -233,7 +235,7 @@ public class Payumoney extends AppCompatActivity {
 //                        });
                     }
                 } catch (JSONException e) {
-                    makeText(Payumoney.this,"Something Went Wrong", LENGTH_SHORT).show();
+                    makeText(Payumoney.this,"Connection Error", LENGTH_SHORT).show();
                 }
 
             }
