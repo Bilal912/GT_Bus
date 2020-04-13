@@ -191,7 +191,6 @@ public class Payumoney extends AppCompatActivity {
                 try {
                     status = response.getBoolean("status");
                     if (status){
-
                         String temp2 = response.getString("message");
                         webView.destroy();
                         final SweetAlertDialog pDialog = new SweetAlertDialog(Payumoney.this, SweetAlertDialog.SUCCESS_TYPE);
@@ -216,7 +215,7 @@ public class Payumoney extends AppCompatActivity {
 
                         msg = response.getString("exception");
                         webView.destroy();
-                        makeText(Payumoney.this,"Else", LENGTH_SHORT).show();
+                        makeText(Payumoney.this,msg, LENGTH_SHORT).show();
 //                        finish();
 //                        final SweetAlertDialog pDialog = new SweetAlertDialog(Payumoney.this, SweetAlertDialog.ERROR_TYPE);
 //                        pDialog.setTitleText("Error");
