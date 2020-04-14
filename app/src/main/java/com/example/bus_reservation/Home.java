@@ -151,7 +151,7 @@ public class Home extends Fragment {
         loading.setMessage("Getting Data...");
         loading.show();
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, Constant.Base_url_Index, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Index, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Boolean status = null;

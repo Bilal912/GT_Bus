@@ -112,20 +112,25 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
 
     }
 
-    public void getdata(String Trip, String Fleet,String Date) {
+    public void getdata(final String Trip, final String Fleet,final String Date) {
 
         final android.app.AlertDialog loading = new ProgressDialog(Seat_Layout.this);
         loading.setMessage("Getting Data...");
-        loading.show();
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST,
-                Constant.Base_url_Bus_Seat + "start_date=" + Date
-                + "trip_route_id=" + Trip
-                + "&fleet_registration_id=" + Fleet, new Response.Listener<JSONObject>() {
+//        loading.show();
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET,Constant.Base_url_Bus_Seat+"start_date="+Date+"&trip_route_id="+Trip+"&fleet_registration_id="+Fleet, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
                 String layout = null;
                 try {
+
+                    JSONArray jsonArray3 = response.getJSONArray("booked_seats");
+                    for (int j = 0; j < jsonArray3.length(); j++) {
+                        JSONObject object = jsonArray3.getJSONObject(j);
+                        String val = object.getString("scalar");
+                        book.add(val);
+                    }
+
                     layout = response.getString("seat_layout");
 
                     JSONArray jsonArray = response.getJSONArray("seat_left");
@@ -143,39 +148,33 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
                         Right.add(value);
                     }
 
-                    JSONArray jsonArray1 = response.getJSONArray("booked_seats");
-                        for (int i = 0; i < jsonArray1.length(); i++) {
-                            JSONObject object = jsonArray1.getJSONObject(i);
-                            String val = object.getString("scalar");
-                            book.add(val);
-                        }
-                        loading.dismiss();
+                    loading.dismiss();
+
+                    String[] separated = layout.split("-");
+                    int left = Integer.parseInt(separated[0].trim());
+                    int right = Integer.parseInt(separated[1].trim());
+
+                    String price = getIntent().getStringExtra("price");
+                    String routn = getIntent().getStringExtra("routn");
+                    String rout_id = getIntent().getStringExtra("rout_id");
+                    String booking_date = getIntent().getStringExtra("booking_date");
+                    String first = getIntent().getStringExtra("first");
+                    String last = getIntent().getStringExtra("last");
+                    String trip_id = getIntent().getStringExtra("trip_id");
+                    String fleet_id = getIntent().getStringExtra("fleet_reg_no");
+
+                    GridLayoutManager layoutManager = new GridLayoutManager(Seat_Layout.this, left);
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setAdapter(new seat_adapter(Seat_Layout.this, model, book, button,price,routn,rout_id,booking_date,first,last,trip_id,fleet_id,Seat_Layout.this));
+
+                    GridLayoutManager layoutManager2 = new GridLayoutManager(Seat_Layout.this, right);
+                    recyclerView2.setLayoutManager(layoutManager2);
+                    recyclerView2.setAdapter(new right_adapter(Seat_Layout.this, Right, book, button,price,routn,rout_id,booking_date,first,last,trip_id,fleet_id));
 
                 } catch (Exception e) {
                     loading.dismiss();
-                    makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
+//                    makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
                 }
-                String[] separated = layout.split("-");
-                int left = Integer.parseInt(separated[0].trim());
-                int right = Integer.parseInt(separated[1].trim());
-
-                String price = getIntent().getStringExtra("price");
-                String routn = getIntent().getStringExtra("routn");
-                String rout_id = getIntent().getStringExtra("rout_id");
-                String booking_date = getIntent().getStringExtra("booking_date");
-                String first = getIntent().getStringExtra("first");
-                String last = getIntent().getStringExtra("last");
-                String trip_id = getIntent().getStringExtra("trip_id");
-                String fleet_id = getIntent().getStringExtra("fleet_reg_no");
-
-                GridLayoutManager layoutManager = new GridLayoutManager(Seat_Layout.this, left);
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(new seat_adapter(Seat_Layout.this, model, book, button,price,routn,rout_id,booking_date,first,last,trip_id,fleet_id,Seat_Layout.this));
-
-                GridLayoutManager layoutManager2 = new GridLayoutManager(Seat_Layout.this, right);
-                recyclerView2.setLayoutManager(layoutManager2);
-                recyclerView2.setAdapter(new right_adapter(Seat_Layout.this, Right, book, button,price,routn,rout_id,booking_date,first,last,trip_id,fleet_id));
-
             }
         }
                 , new Response.ErrorListener() {

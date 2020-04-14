@@ -76,6 +76,7 @@ public class right_adapter extends RecyclerView.Adapter<right_adapter.GithubView
 
         seats = new ArrayList<>();
 
+        //Toast.makeText(context,String.valueOf(list),Toast.LENGTH_LONG).show();
 
         if (list.contains(String.valueOf(user))) {
             holder.textView.setBackgroundColor(context.getResources().getColor(R.color.pink));
