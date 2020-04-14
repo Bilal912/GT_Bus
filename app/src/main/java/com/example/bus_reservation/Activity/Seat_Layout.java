@@ -116,7 +116,7 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
 
         final android.app.AlertDialog loading = new ProgressDialog(Seat_Layout.this);
         loading.setMessage("Getting Data...");
-//        loading.show();
+        loading.show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET,Constant.Base_url_Bus_Seat+"start_date="+Date+"&trip_route_id="+Trip+"&fleet_registration_id="+Fleet, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -173,7 +173,7 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
 
                 } catch (Exception e) {
                     loading.dismiss();
-//                    makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
+                    makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
                 }
             }
         }
