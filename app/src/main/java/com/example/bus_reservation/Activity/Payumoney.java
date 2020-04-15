@@ -181,8 +181,6 @@ public class Payumoney extends AppCompatActivity {
         params.put("numbers[]", Seat_no);
         params.put("gender[]", Seat_gender);
 
-        Toast.makeText(Payumoney.this,String.valueOf(params), LENGTH_LONG).show();
-
         CustomRequest jsonRequest = new CustomRequest(Request.Method.POST, Constant.Base_url_Create_Booking,params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -217,23 +215,23 @@ public class Payumoney extends AppCompatActivity {
 
                         msg = response.getString("exception");
                         webView.destroy();
-                        makeText(Payumoney.this,msg, LENGTH_SHORT).show();
+//                        makeText(Payumoney.this,msg, LENGTH_SHORT).show();
 //                        finish();
-//                        final SweetAlertDialog pDialog = new SweetAlertDialog(Payumoney.this, SweetAlertDialog.ERROR_TYPE);
-//                        pDialog.setTitleText("Error");
-//                        pDialog.setContentText(msg);
-//                        pDialog.setConfirmText("OK");
-//                        pDialog.setCancelable(false);
-//                        pDialog.show();
-//                        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                            @Override
-//                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        final SweetAlertDialog pDialog = new SweetAlertDialog(Payumoney.this, SweetAlertDialog.ERROR_TYPE);
+                        pDialog.setTitleText("Error");
+                        pDialog.setContentText(msg);
+                        pDialog.setConfirmText("OK");
+                        pDialog.setCancelable(false);
+                        pDialog.show();
+                        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
 //                                Intent i = new Intent(Payumoney.this,Menu.class);
 //                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                                startActivity(i);
-//                                finish();
-//                            }
-//                        });
+                                finish();
+                            }
+                        });
                     }
                 } catch (JSONException e) {
                     makeText(Payumoney.this,"Connection Error", LENGTH_SHORT).show();

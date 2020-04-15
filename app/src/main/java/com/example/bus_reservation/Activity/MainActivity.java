@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
 
-                    t.sleep(2000);
+                    t.sleep(1500);
 
                     SharedPreferences editors = getSharedPreferences(MY_PREFS_NAME,MODE_PRIVATE);
                     String Email = editors.getString("email","Null");

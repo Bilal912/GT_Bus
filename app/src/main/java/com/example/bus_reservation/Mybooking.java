@@ -45,12 +45,12 @@ import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
 import static com.example.bus_reservation.Activity.Login.MY_PREFS_NAME;
 
-public class Mybooking extends Fragment {
+public class Mybooking extends Fragment implements com.example.bus_reservation.Adapter.Interface {
 
     RecyclerView recyclerView;
     ArrayList<mybooking_model> model;
     TextView textView;
-
+    String passenger_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class Mybooking extends Fragment {
         recyclerView=view.findViewById(R.id.recycler_id);
         model = new ArrayList<mybooking_model>();
         SharedPreferences editors = getActivity().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String passenger_id = editors.getString("passenger_id","Null");
+        passenger_id = editors.getString("passenger_id","Null");
 
         showData(passenger_id);
 
@@ -77,6 +77,7 @@ public class Mybooking extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 Boolean status = null;
+                model.clear();
                 try {
                     status = response.getBoolean("status");
                     JSONArray jsonArray = response.getJSONArray("details");
@@ -107,9 +108,7 @@ public class Mybooking extends Fragment {
                     else {
                         loading.dismiss();
                         textView.setVisibility(View.VISIBLE);
-                        Toast.makeText(getActivity(),"No trip available", LENGTH_SHORT).show();
                     }
-
 
                 }
                 catch (Exception e){
@@ -119,7 +118,7 @@ public class Mybooking extends Fragment {
 
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
                 recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setAdapter(new mybooking_adapter(getActivity(),model,passenger_id));
+                recyclerView.setAdapter(new mybooking_adapter(getActivity(),model,passenger_id,Mybooking.this));
             }
         }
                 , new Response.ErrorListener() {
@@ -151,4 +150,15 @@ public class Mybooking extends Fragment {
         queue.add(jsonRequest);
     }
 
+    @Override
+    public void onItemClick(ArrayList<String> arrayList) {
+
     }
+
+    @Override
+    public void reload(String id) {
+
+        showData(id);
+
+    }
+}

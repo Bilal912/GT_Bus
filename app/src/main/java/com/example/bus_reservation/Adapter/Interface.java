@@ -4,4 +4,6 @@ import java.util.ArrayList;
 
 public interface Interface {
     void onItemClick(ArrayList<String> arrayList);
+
+    void reload(String id);
 }

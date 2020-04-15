@@ -52,10 +52,13 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
     private final Context context;
     private final String passenger_id;
     private ArrayList<mybooking_model> data;
-    public mybooking_adapter(Context context, ArrayList<mybooking_model> data, String passenger_id){
+    private Interface recyclerInterface;
+
+    public mybooking_adapter(Context context, ArrayList<mybooking_model> data, String passenger_id,Interface recyclerInterface){
         this.context = context;
         this.data= data;
         this.passenger_id=passenger_id;
+        this.recyclerInterface=recyclerInterface;
     }
 
     @NonNull
@@ -145,6 +148,7 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
                                         pDialog2.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                             @Override
                                             public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                                recyclerInterface.reload(passenger_id);
                                                 pDialog2.dismiss();
                                             }
                                         });

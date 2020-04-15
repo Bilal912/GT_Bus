@@ -230,4 +230,9 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
     public void onItemClick(ArrayList<String> arrayList) {
         Final=arrayList;
     }
+
+    @Override
+    public void reload(String id) {
+
+    }
 }
