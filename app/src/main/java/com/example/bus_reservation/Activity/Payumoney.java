@@ -181,6 +181,8 @@ public class Payumoney extends AppCompatActivity {
         params.put("numbers[]", Seat_no);
         params.put("gender[]", Seat_gender);
 
+        Toast.makeText(Payumoney.this,String.valueOf(params), LENGTH_LONG).show();
+
         CustomRequest jsonRequest = new CustomRequest(Request.Method.POST, Constant.Base_url_Create_Booking,params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

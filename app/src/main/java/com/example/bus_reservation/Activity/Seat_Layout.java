@@ -31,6 +31,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 import static android.widget.Toast.LENGTH_LONG;
 import static android.widget.Toast.LENGTH_SHORT;
 import static android.widget.Toast.makeText;
@@ -173,7 +175,20 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
 
                 } catch (Exception e) {
                     loading.dismiss();
-                    makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
+                    //makeText(Seat_Layout.this, "Something Went Wrong", LENGTH_SHORT).show();
+
+                    final SweetAlertDialog pDialog = new SweetAlertDialog(Seat_Layout.this, SweetAlertDialog.WARNING_TYPE);
+                    pDialog.setTitleText("No Seats Available");
+                    pDialog.setConfirmText("OK");
+                    pDialog.setCancelable(false);
+                    pDialog.show();
+                    pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            finish();
+                        }
+                    });
+
                 }
             }
         }

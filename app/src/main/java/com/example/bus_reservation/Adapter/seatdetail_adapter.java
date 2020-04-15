@@ -149,7 +149,7 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus) {
                         //Here user finished the typing, Now save userTypedValue as required
-                        String userTypedValue = code.concat(Name.getText().toString());
+                        String userTypedValue = Name.getText().toString();
                         name.add(userTypedValue);
                     }
                 }
@@ -160,7 +160,7 @@ public class seatdetail_adapter extends RecyclerView.Adapter<seatdetail_adapter.
                 public void onFocusChange(View view, boolean b) {
                     if (!b) {
                         //Here user finished the typing, Now save userTypedValue as required
-                        String Value = Number.getText().toString();
+                        String Value = code.concat(Number.getText().toString());
                         number.add(Value);
                     }
                 }

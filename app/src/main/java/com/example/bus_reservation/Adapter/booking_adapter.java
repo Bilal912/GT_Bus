@@ -89,7 +89,8 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
                     String trip_id = data.get(i).getTripIdNo();
                     String price = data.get(i).getPrice();
                     String rout_name = data.get(i).getTripRouteName();
-                    String booking_date = data.get(i).getBookingDate();
+                    //String booking_date = data.get(i).getBookingDate();
+                    String booking_date = textView.getText().toString();
                     String bus_seat = data.get(i).getFleetSeats();
                     String pickup = data.get(i).getPickupTripLocation();
                     String dropup=data.get(i).getDropTripLocation();

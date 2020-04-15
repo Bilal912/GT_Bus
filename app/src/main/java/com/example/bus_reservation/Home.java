@@ -159,9 +159,9 @@ public class Home extends Fragment {
                 try {
 
                     status = response.getBoolean("response");
-                    JSONArray jsonArray = response.getJSONArray("location_dropdown");
 //                    JSONArray jsonArray2 = response.getJSONArray("fleet_dropdown");
                     if (status){
+                        JSONArray jsonArray = response.getJSONArray("location_dropdown");
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject object = jsonArray.getJSONObject(i);
                             String temp = object.getString("name");
@@ -190,12 +190,13 @@ public class Home extends Fragment {
 
                     }
                     else {
-
+                        loading.dismiss();
+                        Toast.makeText(getActivity(),"No Rout Available", Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 catch (Exception e) {
-
+                    loading.dismiss();
                     Toast.makeText(getActivity(),"Something Went Wrong", Toast.LENGTH_SHORT).show();
                 }
 
