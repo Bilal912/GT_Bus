@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bus_reservation.Cancelled_Booking;
+import com.example.bus_reservation.Contact_us;
 import com.example.bus_reservation.Dashboard;
 import com.example.bus_reservation.Home;
 import com.example.bus_reservation.Mybooking;
@@ -113,6 +114,14 @@ public class Menu extends AppCompatActivity {
                         FragmentTransaction transaction5 = getSupportFragmentManager().beginTransaction();
                         transaction5.replace(R.id.nav_fragment, newFragment5);
                         transaction5.commit();
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_contact:
+                        Fragment newFragment6 = new Contact_us();
+                        FragmentTransaction transaction6 = getSupportFragmentManager().beginTransaction();
+                        transaction6.replace(R.id.nav_fragment, newFragment6);
+                        transaction6.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         break;
 

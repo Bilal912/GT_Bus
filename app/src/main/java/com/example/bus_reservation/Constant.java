@@ -12,6 +12,8 @@ public class Constant {
 
     public static final String Base_url_rating = Base_url+"/save_rating";
 
+    public static final String Base_url_contact_us = Base_url+"/contact_us";
+
     public static final String Base_url_login = Base_url+"/login";
     public static final String Base_url_register = Base_url+"/signup";
     public static final String Base_url_forget = Base_url+"/forgot_password";

@@ -36,6 +36,9 @@
             <item android:id="@+id/nav_share"
                 android:icon="@drawable/share"
                 android:title="Share it" />
+            <item android:id="@+id/nav_contact"
+                android:icon="@drawable/phone"
+                android:title="Contact Us" />
 
             <item android:id="@+id/nav_logout"
             android:icon="@drawable/power"
