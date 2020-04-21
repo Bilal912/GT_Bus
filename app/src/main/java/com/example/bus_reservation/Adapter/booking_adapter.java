@@ -63,8 +63,8 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
 //        githubViewHolder.arrival.setText(data.get(i).getDropTripLocation());
 
         final Calendar myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
+        final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
@@ -72,10 +72,13 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
 //                button.setBackgroundColor(Color.parseColor("#29166f"));
                 //#29166f
                 // TODO Auto-generated method stub
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
                 //updateLabel();
+
                 String myFormat = "yyyy-MM-dd"; //In which you need put here
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 textView.setText(sdf.format(myCalendar.getTime()));
@@ -114,9 +117,13 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DatePickerDialog(context, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
+                DatePickerDialog datePickerDialog = new DatePickerDialog(context, dateSetListener,
+                        myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+                datePickerDialog.show();
             }
         });
 
