@@ -20,9 +20,9 @@
 
                     <TextView
                     android:id="@+id/route_name"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="match_parent"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -146,7 +146,7 @@
 
                     <TextView
                         android:id="@+id/booking_date"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
                         android:gravity="center"
@@ -193,7 +193,7 @@
 
                     <com.skydoves.elasticviews.ElasticButton
                         android:layout_marginTop="5dp"
-                        app:button_duration="250"
+                        app:button_duration="200"
                         app:button_scale="0.87"
                         android:id="@+id/refund"
                         android:layout_below="@id/price_id"

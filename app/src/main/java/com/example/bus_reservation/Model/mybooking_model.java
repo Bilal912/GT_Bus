@@ -79,39 +79,27 @@ public class mybooking_model {
     @Expose
     private String transactionId;
 
+    private String time_added;
+
+    public String getTime_added() {
+        return time_added;
+    }
+
+    public void setTime_added(String time_added) {
+        this.time_added = time_added;
+    }
+
     /**
      * No args constructor for use in serialization
      *
      */
+
     public mybooking_model() {
     }
 
-    /**
-     *
-     * @param dropTripLocation
-     * @param date
-     * @param seatNumbers
-     * @param agentId
-     * @param tripRouteId
-     * @param requestFacilities
-     * @param tripIdNo
-     * @param discount
-     * @param idNo
-     * @param tktRefundId
-     * @param transactionId
-     * @param price
-     * @param offerCode
-     * @param bookingType
-     * @param tktPassengerIdNo
-     * @param bookingDate
-     * @param id
-     * @param paymentStatus
-     * @param pickupTripLocation
-     * @param totalSeat
-     */
-    public mybooking_model(String id, String idNo, String tripIdNo, String tktPassengerIdNo, String tripRouteId, String pickupTripLocation, String dropTripLocation, String requestFacilities, String price, Object discount, String totalSeat, String seatNumbers, Object offerCode, Object tktRefundId, Object agentId, String bookingDate, String date, String bookingType, String paymentStatus, String transactionId) {
-        super();
+    public mybooking_model(String id, String routeName, String idNo, String tripIdNo, String tktPassengerIdNo, String tripRouteId, String pickupTripLocation, String dropTripLocation, String requestFacilities, String price, Object discount, String totalSeat, String seatNumbers, Object offerCode, Object tktRefundId, Object agentId, String bookingDate, String date, String bookingType, String paymentStatus, String transactionId, String time_added) {
         this.id = id;
+        this.routeName = routeName;
         this.idNo = idNo;
         this.tripIdNo = tripIdNo;
         this.tktPassengerIdNo = tktPassengerIdNo;
@@ -131,7 +119,9 @@ public class mybooking_model {
         this.bookingType = bookingType;
         this.paymentStatus = paymentStatus;
         this.transactionId = transactionId;
+        this.time_added = time_added;
     }
+
 
     public String getId() {
         return id;

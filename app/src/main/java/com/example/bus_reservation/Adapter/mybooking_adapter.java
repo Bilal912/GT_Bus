@@ -86,7 +86,7 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
         String filename = timeStampFormat.format(myDate);
         try {
             Date date2 = timeStampFormat.parse(filename);
-            Date date1 = timeStampFormat.parse(data.get(position).getBookingDate());
+            Date date1 = timeStampFormat.parse(data.get(position).getTime_added());
 
             long different = date2.getTime() - date1.getTime();
 

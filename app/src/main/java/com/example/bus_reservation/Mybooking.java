@@ -91,6 +91,7 @@ public class Mybooking extends Fragment implements com.example.bus_reservation.A
                                 value.setBookingDate(object.getString("booking_date"));
                                 value.setIdNo(object.getString("id_no"));
                                 value.setTotalSeat(object.getString("total_seat"));
+                                value.setTime_added(object.getString("time_added"));
                                 value.setSeatNumbers(object.getString("seat_numbers"));
                                 value.setPrice(object.getString("price"));
                                 value.setPaymentStatus(object.getString("payment_status"));
