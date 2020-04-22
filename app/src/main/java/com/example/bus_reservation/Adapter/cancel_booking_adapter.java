@@ -3,6 +3,7 @@ package com.example.bus_reservation.Adapter;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,9 +66,40 @@ public class cancel_booking_adapter extends RecyclerView.Adapter<cancel_booking_
 
         holder.bookingdate.setText(data.get(position).getDate());
         holder.bookingid.setText(data.get(position).getTktBookingIdNo());
-        holder.price.setText(data.get(position).getCancelationFees());
-        holder.cause.setText(data.get(position).getCauses());
-        holder.refund_fee.setText("Refund Amount : ".concat(data.get(position).getRefund_fee()));
+
+        if (data.get(position).getDate().equals("null")){
+            holder.bookingdate.setText("Please Wait");
+        }
+        else {
+            holder.bookingdate.setText(data.get(position).getDate());
+        }
+        if (data.get(position).getCancelationFees().equals("null")){
+            holder.price.setTextSize(12);
+            holder.price.setText("Pending...");
+            holder.price.setTextColor(Color.parseColor("#FF0000"));
+            holder.button.setVisibility(View.GONE);
+        }
+        else {
+            holder.price.setText(data.get(position).getCancelationFees());
+        }
+        if (data.get(position).getCauses().equals("null")){
+            holder.cause.setText("Pending...");
+            holder.cause.setTextColor(Color.parseColor("#FF0000"));
+        }
+        else {
+            holder.cause.setText(data.get(position).getCauses());
+        }
+
+        if (data.get(position).getRefund_fee().equals("null")){
+            holder.refund_fee.setText("");
+        }
+        else {
+            holder.refund_fee.setText("Refund Amount : ".concat(data.get(position).getRefund_fee()));
+        }
+
+//        holder.price.setText(data.get(position).getCancelationFees());
+//        holder.cause.setText(data.get(position).getCauses());
+//        holder.refund_fee.setText("Refund Amount : ".concat(data.get(position).getRefund_fee()));
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override

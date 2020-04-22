@@ -1,5 +1,6 @@
 package com.example.bus_reservation.Adapter;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +27,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class booking_adapter extends RecyclerView.Adapter<booking_adapter.GithubViewHolder> {
     private final String first;
@@ -57,10 +60,26 @@ public class booking_adapter extends RecyclerView.Adapter<booking_adapter.Github
         String space = "  ";
         githubViewHolder.routname.setText(data.get(i).getTripRouteName());
 //        githubViewHolder.duration.setText(data.get(i).getPickupTripLocation());
-        githubViewHolder.price.setText(data.get(i).getPrice());
         githubViewHolder.vehiclenumber.setText(data.get(i).getFleetRegistrationNo());
         githubViewHolder.departure.setText("PickUp Timing: ".concat(data.get(i).getStartTime()));
 //        githubViewHolder.arrival.setText(data.get(i).getDropTripLocation());
+
+        if (data.get(i).getPrice().equals("null")){
+            final SweetAlertDialog pDialog = new SweetAlertDialog(context, SweetAlertDialog.WARNING_TYPE);
+            pDialog.setTitleText("No Route Available Right Now");
+            pDialog.setConfirmText("OK");
+            pDialog.setCancelable(false);
+            pDialog.show();
+            pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    ((Activity)context).finish();
+                }
+            });
+        }
+        else {
+            githubViewHolder.price.setText(data.get(i).getPrice());
+        }
 
         final Calendar myCalendar = Calendar.getInstance();
 

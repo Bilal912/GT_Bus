@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     app:cardElevation="10dp"
     app:cardCornerRadius="20dp" >
+
     <LinearLayout
         android:background="@drawable/book_border"
         android:layout_width="match_parent"
@@ -129,7 +130,7 @@
                 android:textSize="12sp"
                 />
             <com.skydoves.elasticviews.ElasticButton
-                app:button_duration="250"
+                app:button_duration="200"
                 app:button_scale="0.87"
                 android:id="@+id/view"
                 android:layout_marginTop="5dp"

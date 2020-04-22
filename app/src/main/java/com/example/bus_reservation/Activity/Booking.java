@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,11 +48,13 @@ public class Booking extends AppCompatActivity {
     TextView textView;
     ElasticButton button;
     String stat = "0";
+    LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
 
+        linearLayout = findViewById(R.id.linearLayout3);
         button=findViewById(R.id.book_button);
         textView=findViewById(R.id.date);
         back=findViewById(R.id.back);
@@ -103,13 +106,17 @@ public class Booking extends AppCompatActivity {
                             value.setPrice(object.getString("price"));
                             value.setBookingDate(object.getString("booking_date"));
                             value.setFleetSeats(object.getString("fleet_seats"));
+                            value.setPrice(object.getString("price"));
                             model.add(value);
                             loading.dismiss();
                         }
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(Booking.this);
+                        recyclerView.setLayoutManager(layoutManager);
+                        recyclerView.setAdapter(new booking_adapter(Booking.this,model,first,last,button,textView));
                     }
                     else {
                         loading.dismiss();
-
+                        linearLayout.setVisibility(View.GONE);
                         final SweetAlertDialog pDialog = new SweetAlertDialog(Booking.this, SweetAlertDialog.WARNING_TYPE);
                         pDialog.setTitleText("No Trip Available");
                         pDialog.setConfirmText("OK");
@@ -125,17 +132,27 @@ public class Booking extends AppCompatActivity {
                 }
                 catch (Exception e){
                     loading.dismiss();
-                    Toast.makeText(Booking.this,"No Data Found", LENGTH_SHORT).show();
+                    linearLayout.setVisibility(View.GONE);
+                    final SweetAlertDialog pDialog = new SweetAlertDialog(Booking.this, SweetAlertDialog.WARNING_TYPE);
+                    pDialog.setTitleText("This Route not Assign Yet");
+                    pDialog.setConfirmText("OK");
+                    pDialog.setCancelable(false);
+                    pDialog.show();
+                    pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            finish();
+                        }
+                    });
                 }
-                    LinearLayoutManager layoutManager = new LinearLayoutManager(Booking.this);
-                    recyclerView.setLayoutManager(layoutManager);
-                    recyclerView.setAdapter(new booking_adapter(Booking.this,model,first,last,button,textView));
+
             }
         }
                 , new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 loading.dismiss();
+                linearLayout.setVisibility(View.GONE);
                 makeText(Booking.this, "Connection Error", LENGTH_LONG).show();
             }
         });
