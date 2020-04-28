@@ -68,7 +68,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="@font/gotham"
-                        android:text="Seat Number : "
+                        android:text="Seat # : "
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
@@ -145,6 +145,7 @@
                         />
 
                     <TextView
+                        android:textStyle="bold"
                         android:id="@+id/booking_date"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
@@ -153,9 +154,9 @@
                         android:layout_below="@id/dropup_demo"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham"
-                        android:textColor="#000000"
+                        android:textColor="@color/colorPrimary"
                         android:text="Journey Date"
-                        android:textSize="14sp"
+                        android:textSize="15sp"
                         />
 
                     <TextView
