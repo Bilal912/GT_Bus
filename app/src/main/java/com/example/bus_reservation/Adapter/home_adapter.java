@@ -34,9 +34,11 @@ public class home_adapter extends RecyclerView.Adapter<home_adapter.GithubViewHo
     private final ArrayList<String> number = new ArrayList<String>();
     private final ArrayList<String> gender = new ArrayList<String>();
 
-    public home_adapter(Context context, ArrayList<String> data){
+    private String fleet_id;
+    public home_adapter(Context context, ArrayList<String> data,String fleet_id){
         this.context = context;
         this.data= data;
+        this.fleet_id=fleet_id;
     }
 
     @NonNull
@@ -60,7 +62,7 @@ public class home_adapter extends RecyclerView.Adapter<home_adapter.GithubViewHo
                     in.putExtra("first",data.get(position));
                     in.putExtra("last","");
                     in.putExtra("date","");
-                    in.putExtra("vtype","");
+                    in.putExtra("vtype",fleet_id);
                     context.startActivity(in);
 
             }

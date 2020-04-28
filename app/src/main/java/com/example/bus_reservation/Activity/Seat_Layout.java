@@ -119,6 +119,7 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
         final android.app.AlertDialog loading = new ProgressDialog(Seat_Layout.this);
         loading.setMessage("Getting Data...");
         loading.show();
+        loading.setCancelable(false);
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET,Constant.Base_url_Bus_Seat+"start_date="+Date+"&trip_route_id="+Trip+"&fleet_registration_id="+Fleet, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -134,7 +135,6 @@ public class Seat_Layout extends AppCompatActivity implements Interface {
                     }
 
                     layout = response.getString("seat_layout");
-
                     JSONArray jsonArray = response.getJSONArray("seat_left");
                     for (int i = 0; i < jsonArray.length(); i++) {
                         //seat_model value = new seat_model();

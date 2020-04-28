@@ -72,7 +72,7 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
     @Override
     public void onBindViewHolder(@NonNull final GithubViewHolder holder, int position) {
 
-        holder.bookingdate.setText("Booking Date  :  ".concat(data.get(position).getBookingDate()));
+        holder.bookingdate.setText("Journey Date : ".concat(data.get(position).getBookingDate()));
         holder.bookingid.setText(data.get(position).getIdNo());
         holder.seatnumber.setText(data.get(position).getSeatNumbers());
    //     holder.totalseat.setText(data.get(position).getTotalSeat());
@@ -80,6 +80,11 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
         holder.routname.setText(data.get(position).getRouteName());
         holder.Pick.setText(data.get(position).getPickupTripLocation());
         holder.Drop.setText(data.get(position).getDropTripLocation());
+
+        String str = data.get(position).getTime_added();
+        String[] splited = str.split("\\s+");
+
+        holder.datey.setText("Booking Date : ".concat(splited[0]));
 
         SimpleDateFormat timeStampFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date myDate = new Date();
@@ -205,10 +210,11 @@ public class mybooking_adapter extends RecyclerView.Adapter<mybooking_adapter.Gi
     }
     public class GithubViewHolder extends RecyclerView.ViewHolder{
 
-        TextView bookingdate,bookingid,routname,price,totalseat,seatnumber,Pick,Drop;
+        TextView bookingdate,bookingid,routname,price,totalseat,seatnumber,Pick,Drop,datey;
         Button button;
         public GithubViewHolder(@NonNull View itemView) {
             super(itemView);
+            datey = itemView.findViewById(R.id.datey);
             Pick=itemView.findViewById(R.id.pickup);
             Drop=itemView.findViewById(R.id.dropup);
             routname= itemView.findViewById(R.id.route_name);

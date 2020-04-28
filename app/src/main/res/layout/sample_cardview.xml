@@ -8,7 +8,7 @@
     app:cardCornerRadius="20dp" >
 
             <LinearLayout
-                android:background="@drawable/book_border"
+            android:background="@drawable/book_border"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -146,11 +146,24 @@
 
                     <TextView
                         android:id="@+id/booking_date"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_width="match_parent"
-                        android:gravity="center"
+                        android:layout_marginStart="5dp"
                         android:layout_below="@id/dropup_demo"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gotham"
+                        android:textColor="#000000"
+                        android:text="Journey Date"
+                        android:textSize="14sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/datey"
+                        android:layout_marginBottom="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_below="@id/booking_date"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gotham"
                         android:textColor="#000000"

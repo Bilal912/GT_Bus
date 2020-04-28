@@ -159,7 +159,7 @@ public class Home extends Fragment {
                 try {
 
                     status = response.getBoolean("response");
-//                    JSONArray jsonArray2 = response.getJSONArray("fleet_dropdown");
+                    String fleet_id = "";
                     if (status){
                         JSONArray jsonArray = response.getJSONArray("location_dropdown");
                         for (int i = 0; i < jsonArray.length(); i++) {
@@ -171,21 +171,20 @@ public class Home extends Fragment {
                             Id.add(temp2);
                         }
 
+                        JSONArray jsonArray2 = response.getJSONArray("fleet_dropdown");
+                        for (int j = 0; j < jsonArray2.length(); j++) {
+                            JSONObject object2 = jsonArray2.getJSONObject(j);
+                            fleet_id = object2.getString("id");
+                        }
+
                         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
                         recyclerView.setLayoutManager(layoutManager);
-                        recyclerView.setAdapter(new home_adapter(getContext(), Startpoint));
+                        recyclerView.setAdapter(new home_adapter(getContext(), Startpoint,fleet_id));
                         loading.dismiss();
 
 //                        Start.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Startpoint));
 //                        End.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Endpoint));
 //
-//                        for (int j = 0; j < jsonArray2.length(); j++) {
-//                            JSONObject object2 = jsonArray2.getJSONObject(j);
-//                            String tem = object2.getString("type");
-//                            type.add(tem);
-//                            String tem2 = object2.getString("id");
-//                            Vid.add(tem2);
-//                        }
 //                        Type.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, type));
 
                     }

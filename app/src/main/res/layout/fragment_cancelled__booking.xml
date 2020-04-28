@@ -16,7 +16,7 @@
         android:layout_centerInParent="true"
         android:visibility="gone"
         android:id="@+id/no_cancel"
-        android:text="No Cancel Booking Found"
+        android:text=" No Cancel Booking Found "
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="false"

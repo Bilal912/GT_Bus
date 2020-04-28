@@ -78,8 +78,11 @@ public class Booking extends AppCompatActivity {
         final android.app.AlertDialog loading = new ProgressDialog(Booking.this);
         loading.setMessage("Wait...");
         loading.show();
+
+        //Toast.makeText(Booking.this,Vtype, LENGTH_LONG).show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Search+"start_point="+first
-                //+"&end_point="+last+"&date="+date+"&fleet_type="+Vtype
+                //+"&end_point="+last+"&date="+date+
+                 +"&fleet_type="+Vtype
                 , new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
