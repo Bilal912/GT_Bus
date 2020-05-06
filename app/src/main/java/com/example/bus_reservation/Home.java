@@ -36,6 +36,7 @@ import com.example.bus_reservation.Activity.Pick_Drop;
 import com.example.bus_reservation.Activity.SeatDetail;
 import com.example.bus_reservation.Adapter.home_adapter;
 import com.example.bus_reservation.Adapter.seatdetail_adapter;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -54,13 +55,14 @@ public class Home extends Fragment {
     Spinner Start,End,Type;
     RecyclerView recyclerView;
     Button button;
+    ShimmerFrameLayout frameLayout;
     ArrayList<String> Startpoint,type,Endpoint,Id,Vid;
     TextView textView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
+        frameLayout = view.findViewById(R.id.shimmer_id);
         recyclerView=view.findViewById(R.id.recycler_id);
         Vid=new ArrayList<>();
         Id= new ArrayList<String>();
@@ -149,7 +151,7 @@ public class Home extends Fragment {
 
         final android.app.AlertDialog loading = new ProgressDialog(getContext());
         loading.setMessage("Getting Data...");
-        loading.show();
+        //loading.show();
 
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Index, new Response.Listener<JSONObject>() {
             @Override
@@ -181,6 +183,9 @@ public class Home extends Fragment {
                         recyclerView.setLayoutManager(layoutManager);
                         recyclerView.setAdapter(new home_adapter(getContext(), Startpoint,fleet_id));
                         loading.dismiss();
+                        frameLayout.stopShimmerAnimation();
+                        frameLayout.setVisibility(View.GONE);
+
 
 //                        Start.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Startpoint));
 //                        End.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_dropdown_item, Endpoint));
@@ -190,6 +195,9 @@ public class Home extends Fragment {
                     }
                     else {
                         loading.dismiss();
+                        frameLayout.stopShimmerAnimation();
+                        frameLayout.setVisibility(View.GONE);
+
                         Toast.makeText(getActivity(),"No Rout Available", Toast.LENGTH_SHORT).show();
                     }
 
@@ -229,4 +237,16 @@ public class Home extends Fragment {
         queue.add(jsonRequest);
     }
 
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        frameLayout.startShimmerAnimation();
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        frameLayout.startShimmerAnimation();
+    }
 }

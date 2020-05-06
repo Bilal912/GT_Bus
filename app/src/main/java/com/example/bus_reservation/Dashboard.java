@@ -69,7 +69,7 @@ public class Dashboard extends Fragment {
 
     private void getData(String passenger_id) {
         final android.app.AlertDialog loading = new ProgressDialog(getActivity());
-        loading.setMessage("Loading...");
+        loading.setMessage("Getting Data...");
         loading.show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Dashboard+"?customer_id="+passenger_id, new Response.Listener<JSONObject>() {
             @Override

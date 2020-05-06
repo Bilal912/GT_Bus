@@ -29,6 +29,7 @@ import com.example.bus_reservation.Adapter.booking_adapter;
 import com.example.bus_reservation.Adapter.mybooking_adapter;
 import com.example.bus_reservation.Model.booking_model;
 import com.example.bus_reservation.Model.mybooking_model;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -51,12 +52,14 @@ public class Mybooking extends Fragment implements com.example.bus_reservation.A
     ArrayList<mybooking_model> model;
     TextView textView;
     String passenger_id;
+    ShimmerFrameLayout frameLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_mybooking, container, false);
 
+        frameLayout = view.findViewById(R.id.shimmer_id);
         textView=view.findViewById(R.id.no_booking);
         recyclerView=view.findViewById(R.id.recycler_id);
         model = new ArrayList<mybooking_model>();
@@ -72,7 +75,7 @@ public class Mybooking extends Fragment implements com.example.bus_reservation.A
 
         final android.app.AlertDialog loading = new ProgressDialog(getContext());
         loading.setMessage("Wait...");
-        loading.show();
+        //loading.show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_My_Booking+"?id_no="+passenger_id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -100,14 +103,22 @@ public class Mybooking extends Fragment implements com.example.bus_reservation.A
                                 value.setDropTripLocation(object.getString("drop_trip_location"));
                                 model.add(value);
                                 loading.dismiss();
+
+                                frameLayout.stopShimmerAnimation();
+                                frameLayout.setVisibility(View.GONE);
+
                             }
                             else {
                                 loading.dismiss();
+
                             }
                         }
                     }
                     else {
                         loading.dismiss();
+                        frameLayout.stopShimmerAnimation();
+                        frameLayout.setVisibility(View.GONE);
+
                         textView.setVisibility(View.VISIBLE);
                     }
 
@@ -161,5 +172,18 @@ public class Mybooking extends Fragment implements com.example.bus_reservation.A
 
         showData(id);
 
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        frameLayout.startShimmerAnimation();
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        frameLayout.startShimmerAnimation();
     }
 }

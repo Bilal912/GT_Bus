@@ -27,6 +27,7 @@ import com.example.bus_reservation.Adapter.cancel_booking_adapter;
 import com.example.bus_reservation.Adapter.mybooking_adapter;
 import com.example.bus_reservation.Model.cancel_booking_model;
 import com.example.bus_reservation.Model.mybooking_model;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,12 +42,13 @@ public class Cancelled_Booking extends Fragment {
     RecyclerView recyclerView;
     ArrayList<cancel_booking_model> model;
     TextView textView;
-
+    ShimmerFrameLayout frameLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cancelled__booking, container, false);
+        frameLayout = view.findViewById(R.id.shimmer_id);
 
         textView=view.findViewById(R.id.no_cancel);
         recyclerView=view.findViewById(R.id.recycler_id);
@@ -64,7 +66,7 @@ public class Cancelled_Booking extends Fragment {
     private void showData(final String passenger_id) {
         final android.app.AlertDialog loading = new ProgressDialog(getContext());
         loading.setMessage("Wait...");
-        loading.show();
+        //loading.show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Cancel_Booking+"?id_no="+passenger_id, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -85,11 +87,18 @@ public class Cancelled_Booking extends Fragment {
                             value.setRefund_fee(object.getString("refund_amount"));
                             model.add(value);
                             loading.dismiss();
+
+                            frameLayout.stopShimmerAnimation();
+                            frameLayout.setVisibility(View.GONE);
+
                         }
                     }
 
                     else {
                         loading.dismiss();
+                        frameLayout.stopShimmerAnimation();
+                        frameLayout.setVisibility(View.GONE);
+
                         textView.setVisibility(View.VISIBLE);
                     }
                 }
@@ -132,4 +141,16 @@ public class Cancelled_Booking extends Fragment {
         queue.add(jsonRequest);
     }
 
+    @Override
+    public void onResume() {
+
+        super.onResume();
+        frameLayout.startShimmerAnimation();
+    }
+    @Override
+    public void onPause() {
+
+        super.onPause();
+        frameLayout.startShimmerAnimation();
+    }
 }

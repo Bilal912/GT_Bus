@@ -109,10 +109,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:weightSum="100">
 
-<!--            <Spinner-->
+
+            <!--            <Spinner-->
 <!--                android:gravity="center"-->
 <!--                android:id="@+id/start_point"-->
 <!--                android:layout_width="match_parent"-->
@@ -125,18 +126,41 @@
 <!--                />-->
 
             <androidx.recyclerview.widget.RecyclerView
-
                 android:id="@+id/recycler_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
-            <ImageView
-                android:visibility="gone"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmer_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="10"
-                android:background="@drawable/ic_swap_horiz_black_24dp" />
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:duration="800"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <include layout="@layout/shimmer_two"/>
+                    <include layout="@layout/shimmer_two"/>
+                    <include layout="@layout/shimmer_two"/>
+                    <include layout="@layout/shimmer_two"/>
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+<!--            <ImageView-->
+<!--                android:visibility="gone"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="10"-->
+<!--                android:background="@drawable/ic_swap_horiz_black_24dp" />-->
 
             <Spinner
                 android:visibility="gone"

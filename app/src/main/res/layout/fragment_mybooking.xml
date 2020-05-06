@@ -25,4 +25,28 @@
         android:textSize="16sp"
         />
 
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:duration="800"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <include layout="@layout/shimmer_one"/>
+            <include layout="@layout/shimmer_one"/>
+            <include layout="@layout/shimmer_one"/>
+            <include layout="@layout/shimmer_one"/>
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
 </FrameLayout>
