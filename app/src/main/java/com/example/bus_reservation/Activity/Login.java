@@ -37,7 +37,7 @@ import static android.widget.Toast.*;
 
 public class Login extends AppCompatActivity {
 
-       public static final String MY_PREFS_NAME = "MyPrefsFile";
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
 
     TextView register, forget;
     Button login;
@@ -113,40 +113,40 @@ public class Login extends AppCompatActivity {
 
                     JSONArray jsonArray = response.getJSONArray("data");
                     if (status){
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
 
-                        JSONObject object = jsonArray.getJSONObject(i);
-                        Toast.makeText(Login.this, "Login Successfully !!!", LENGTH_SHORT).show();
+                            JSONObject object = jsonArray.getJSONObject(i);
+                            Toast.makeText(Login.this, "Login Successfully !!!", LENGTH_SHORT).show();
 
-                        String id = object.getString("id");
-                        String firstname = object.getString("firstname");
-                        String lastname = object.getString("lastname");
-                        String phone = object.getString("phone");
-                        String address = object.getString("address");
-                        String nid = object.getString("nid");
-                        String pass = object.getString("password");
-                        String passenger_id = object.getString("id_no");
+                            String id = object.getString("id");
+                            String firstname = object.getString("firstname");
+                            String lastname = object.getString("lastname");
+                            String phone = object.getString("phone");
+                            String address = object.getString("address");
+                            String nid = object.getString("nid");
+                            String pass = object.getString("password");
+                            String passenger_id = object.getString("id_no");
 
-                        SharedPreferences.Editor editors = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                        editors.putString("email", Email);
-                        editors.putString("id", id);
-                        editors.putString("firstname", firstname);
-                        editors.putString("lastname", lastname);
-                        editors.putString("phone", phone);
-                        editors.putString("address", address);
-                        editors.putString("nid", nid);
-                        editors.putString("pass", pass);
-                        editors.putString("passenger_id",passenger_id);
-                        editors.apply();
+                            SharedPreferences.Editor editors = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                            editors.putString("email", Email);
+                            editors.putString("id", id);
+                            editors.putString("firstname", firstname);
+                            editors.putString("lastname", lastname);
+                            editors.putString("phone", phone);
+                            editors.putString("address", address);
+                            editors.putString("nid", nid);
+                            editors.putString("pass", pass);
+                            editors.putString("passenger_id",passenger_id);
+                            editors.apply();
 
-                        gettokenrequest(Token,passenger_id);
-                        loading.dismiss();
+                            gettokenrequest(Token,passenger_id);
+                            loading.dismiss();
 
-                        Intent intent = new Intent(Login.this, Menu.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+                            Intent intent = new Intent(Login.this, Menu.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
 
-                    }
+                        }
 
                     }
                     else {

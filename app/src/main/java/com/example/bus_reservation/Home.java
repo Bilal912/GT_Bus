@@ -30,7 +30,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.bus_reservation.Activity.Booking;
-import com.example.bus_reservation.Activity.Login;
 import com.example.bus_reservation.Activity.Menu;
 import com.example.bus_reservation.Activity.Pick_Drop;
 import com.example.bus_reservation.Activity.SeatDetail;
@@ -204,7 +203,10 @@ public class Home extends Fragment {
                 }
                 catch (Exception e) {
                     loading.dismiss();
-                    Toast.makeText(getActivity(),"Something Went Wrong", Toast.LENGTH_SHORT).show();
+                    frameLayout.stopShimmerAnimation();
+                    frameLayout.setVisibility(View.GONE);
+
+                    Toast.makeText(getActivity(),"No Data Found", Toast.LENGTH_SHORT).show();
                 }
 
             }
