@@ -9,6 +9,7 @@
     app:cardCornerRadius="20dp"
     >
 
+
     <LinearLayout
         android:background="@drawable/book_border"
         android:layout_width="match_parent"

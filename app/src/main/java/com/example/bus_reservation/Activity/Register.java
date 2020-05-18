@@ -152,6 +152,7 @@ public class Register extends AppCompatActivity {
       }
     });
 
+
     jsonRequest.setRetryPolicy(new RetryPolicy() {
       @Override
       public int getCurrentTimeout() {

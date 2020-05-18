@@ -1,5 +1,6 @@
 package com.example.bus_reservation.Model;
 
+
 public class seat_model {
     private String scalar;
 

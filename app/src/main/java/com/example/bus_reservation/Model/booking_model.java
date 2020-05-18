@@ -1,6 +1,7 @@
 
 package com.example.bus_reservation.Model;
 
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

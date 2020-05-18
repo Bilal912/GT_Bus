@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Show_image">
 
+
     <com.skydoves.elasticviews.ElasticImageView
         android:id="@+id/image_id"
         android:layout_centerInParent="true"

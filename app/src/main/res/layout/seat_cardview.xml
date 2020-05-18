@@ -5,6 +5,7 @@
     android:layout_margin="5dp"
     >
 
+
     <TextView
         android:layout_gravity="center"
         android:id="@+id/seat_id"

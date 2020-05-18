@@ -1,5 +1,6 @@
 package com.example.bus_reservation.Model;
 
+
 public class seatdetail_model {
     String Name;
 

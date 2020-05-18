@@ -82,7 +82,7 @@ public class Booking extends AppCompatActivity {
         //Toast.makeText(Booking.this,Vtype, LENGTH_LONG).show();
         JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, Constant.Base_url_Search+"start_point="+first
                 //+"&end_point="+last+"&date="+date+
-                 +"&fleet_type="+Vtype
+                +"&fleet_type="+Vtype
                 , new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

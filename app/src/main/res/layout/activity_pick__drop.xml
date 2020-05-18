@@ -8,6 +8,7 @@
     tools:context=".Activity.Pick_Drop"
     >
 
+
     <LinearLayout
         android:id="@+id/linear"
         android:background="@color/colorPrimary"
