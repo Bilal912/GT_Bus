@@ -130,7 +130,8 @@ public class Menu extends AppCompatActivity {
                         Intent sendIntent = new Intent();
                         sendIntent.setAction(Intent.ACTION_SEND);
                         sendIntent.putExtra(Intent.EXTRA_TEXT,
-                                "Hey check out our app at: https://play.google.com/store/apps/details?id=com.example.bus_reservation");
+                                "Hey check out this app at: https://play.google.com/store/apps/details?id="
+                                        +getApplicationContext().getPackageName());
                         sendIntent.setType("text/plain");
                         startActivity(sendIntent);
                         drawer.closeDrawers();

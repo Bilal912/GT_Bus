@@ -79,7 +79,7 @@ public class Payumoney extends AppCompatActivity {
         SharedPreferences editors = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         String Email = editors.getString("email", "Null");
         passenger_id = editors.getString("passenger_id","Null");
-        webView.loadUrl("http://gtbus.org/payumoney/index.php?email="+Email+"&amount="+Price);
+        webView.loadUrl("https://gtbus.org/payumoney/index.php?email="+Email+"&amount="+Price);
 
         webView.setWebViewClient(new WebViewClient() {
 

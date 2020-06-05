@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:179070978578:android:3e1d71173484caf8e6e6cb",
         "android_client_info": {
-          "package_name": "com.example.bus_reservation"
+          "package_name": "com.ers.gt_bus"
         }
       },
       "oauth_client": [
