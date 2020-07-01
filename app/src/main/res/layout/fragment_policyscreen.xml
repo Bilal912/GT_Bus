@@ -1,0 +1,137 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="com.example.bus_reservation.Policyscreen">
+
+
+    <ScrollView
+        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Our Policy"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="20dp"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/calibri"
+                />
+
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pol1"
+                android:fontFamily="@font/gotham"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail1"
+                android:fontFamily="@font/gotham"
+                />
+
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pol2"
+                android:fontFamily="@font/gotham"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail2"
+                android:fontFamily="@font/gotham"
+                />
+
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pol3"
+                android:fontFamily="@font/gotham"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail3"
+                android:fontFamily="@font/gotham"
+                />
+
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pol4"
+                android:fontFamily="@font/gotham"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail4"
+                android:fontFamily="@font/gotham"
+                />
+
+            <TextView
+                android:textSize="15sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pol5"
+                android:fontFamily="@font/gotham"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail5"
+                android:fontFamily="@font/gotham"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

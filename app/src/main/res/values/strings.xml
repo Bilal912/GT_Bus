@@ -7,4 +7,46 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="head1"><b>How many days advance booking for Gtbus ?</b></string>
+
+    <string name="head2"><b>How do you write a shipping policy ?</b></string>
+
+    <string name="head3"><b>What is the cancellation policy in Gtbus ?</b></string>
+
+    <string name="head4"><b>What is Return Policy of Gtbus ?</b></string>
+
+    <string name="head5"><b>How do I get a refund from Gtbus ?</b></string>
+
+    <string name="para1">Advance reservations are made generally up to 30 days in advance for all routes and all buses. The period of advance reservation (ARP) is exclusive of the day of departure of the bus.</string>
+
+    <string name="para2">No shipping and membership policy in Gtbus. The destination and departure place will be shown on bus ticket.</string>
+
+    <string name="para3">How can I cancel my bus ticket online? Yes you can cancel your bus ticket at cancellation fee.The following is the cancellation fee: Between 24 hours to 3 days before journey the cancellation charge is 50%. Between 3 days to 7 days before journey the cancellation charge is 25%. Between 7days to  30 days before journey the cancellation charge is 10%.</string>
+
+    <string name="para4">Gtbus has a standard return policy of 15 days from the date of cancellation . </string>
+
+    <string name="para5">Our customer support team will help you process the request of refund as per the cancellation policy of Gtbus. </string>
+
+
+    <string name="pol1">Advance booking policy of Gtbus .</string>
+
+    <string name="pol2">Shipping/membership  policy of Gtbus .</string>
+
+    <string name="pol3">Cancellation policy in Gtbus .</string>
+
+    <string name="pol4">Return Policy of Gtbus .</string>
+
+    <string name="pol5">Refund policy of Gtbus .</string>
+
+    <string name="detail1">Advance reservations are made generally up to 30 days in advance for all routes and all buses. The period of advance reservation (ARP) is exclusive of the day of departure of the bus.</string>
+
+    <string name="detail2">No shipping and membership policy in Gtbus. The destination and departure place will be shown on bus ticket.</string>
+
+    <string name="detail3">How can I cancel my bus ticket online? Yes you can cancel your bus ticket at cancellation fee.The following is the cancellation fee: Between 24 hours to 3 days before journey the cancellation charge is 50%. Between 3 days to 7 days before journey the cancellation charge is 25%. Between 7days to  30 days before journey the cancellation charge is 10%.</string>
+
+    <string name="detail4">Gtbus has a standard return policy of 15 days from the date of cancellation . </string>
+
+    <string name="detail5">Our customer support team will help you process the request of refund as per the cancellation policy of Gtbus. </string>
+
+
 </resources>

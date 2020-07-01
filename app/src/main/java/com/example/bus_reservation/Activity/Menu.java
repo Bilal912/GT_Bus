@@ -28,8 +28,10 @@ import android.widget.Toast;
 import com.example.bus_reservation.Cancelled_Booking;
 import com.example.bus_reservation.Contact_us;
 import com.example.bus_reservation.Dashboard;
+import com.example.bus_reservation.Faqscreen;
 import com.example.bus_reservation.Home;
 import com.example.bus_reservation.Mybooking;
+import com.example.bus_reservation.Policyscreen;
 import com.example.bus_reservation.R;
 import com.example.bus_reservation.Update;
 import com.google.android.material.navigation.NavigationView;
@@ -123,6 +125,22 @@ public class Menu extends AppCompatActivity {
                         FragmentTransaction transaction6 = getSupportFragmentManager().beginTransaction();
                         transaction6.replace(R.id.nav_fragment, newFragment6);
                         transaction6.commit();
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_faq:
+                        Fragment newFragment7 = new Faqscreen();
+                        FragmentTransaction transaction7 = getSupportFragmentManager().beginTransaction();
+                        transaction7.replace(R.id.nav_fragment, newFragment7);
+                        transaction7.commit();
+                        drawer.closeDrawer(GravityCompat.START);
+                        break;
+
+                    case R.id.nav_policy:
+                        Fragment newFragment8 = new Policyscreen();
+                        FragmentTransaction transaction8 = getSupportFragmentManager().beginTransaction();
+                        transaction8.replace(R.id.nav_fragment, newFragment8);
+                        transaction8.commit();
                         drawer.closeDrawer(GravityCompat.START);
                         break;
 
